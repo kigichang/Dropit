@@ -47,7 +47,8 @@ class ViewController: UIViewController {
     
     func drop() {
         var frame = CGRect(origin: CGPointZero, size: ViewController.DROP_SIZE)
-        frame.origin.x = ((CGFloat(arc4random()) % self.gameView.bounds.size.width) / ViewController.DROP_SIZE.width) * ViewController.DROP_SIZE.width
+        let x = Int(arc4random()) % Int(self.gameView.bounds.size.width) / Int(ViewController.DROP_SIZE.width)
+        frame.origin.x = CGFloat(x) * ViewController.DROP_SIZE.width
         
         var dropView = UIView(frame: frame)
         dropView.backgroundColor = self.randomColor()

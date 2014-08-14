@@ -8,18 +8,66 @@
 
 import UIKit
 
+let GLOBAL_DROP_SIZE = CGSize(width: 40, height: 40)
+
 class ViewController: UIViewController {
     
 // MARK: Properties
+    class var DROP_SIZE : CGSize {
+        return GLOBAL_DROP_SIZE
+    }
+    
     @IBOutlet var gameView: UIView!
     
+    lazy var animator: UIDynamicAnimator = { () -> UIDynamicAnimator in
+        return UIDynamicAnimator(referenceView: self.gameView!)
+    }()
+
+    lazy var gravity: UIGravityBehavior = { () -> UIGravityBehavior in
+        var g = UIGravityBehavior()
+        g.magnitude = 0.9
+        self.animator.addBehavior(g)
+        return g
+    }()
+
+
+    lazy var collider: UICollisionBehavior = { () -> UICollisionBehavior in
+        var c = UICollisionBehavior()
+        c.translatesReferenceBoundsIntoBoundary = true
+        self.animator.addBehavior(c)
+        return c
+    }()
     
 // MARK: Gesture Action
     
     @IBAction func tap(sender: UITapGestureRecognizer) {
+        self.drop()
     }
     
     
+    func drop() {
+        var frame = CGRect(origin: CGPointZero, size: ViewController.DROP_SIZE)
+        frame.origin.x = ((CGFloat(arc4random()) % self.gameView.bounds.size.width) / ViewController.DROP_SIZE.width) * ViewController.DROP_SIZE.width
+        
+        var dropView = UIView(frame: frame)
+        dropView.backgroundColor = self.randomColor()
+        
+        self.gameView.addSubview(dropView)
+        self.gravity.addItem(dropView)
+        self.collider.addItem(dropView)
+    }
+    
+    
+    func randomColor() -> UIColor {
+        switch arc4random() % 5 {
+        case 0: return UIColor.greenColor()
+        case 1: return UIColor.blueColor()
+        case 2: return UIColor.orangeColor()
+        case 3: return UIColor.redColor()
+        case 4: return UIColor.purpleColor()
+        default: return UIColor.blackColor()
+        }
+    }
 
 // MARK: Initialize
     override func viewDidLoad() {

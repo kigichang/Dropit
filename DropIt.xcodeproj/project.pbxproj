@@ -77,7 +77,6 @@
 		17E60531199C64AC000DC8B0 /* DropIt */ = {
 			isa = PBXGroup;
 			children = (
-				17E60534199C64AC000DC8B0 /* AppDelegate.swift */,
 				17E60539199C64AC000DC8B0 /* ViewController.swift */,
 				17E6053B199C64AC000DC8B0 /* Main.storyboard */,
 				17E6053E199C64AC000DC8B0 /* Images.xcassets */,
@@ -90,6 +89,7 @@
 		17E60532199C64AC000DC8B0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				17E60534199C64AC000DC8B0 /* AppDelegate.swift */,
 				17E60533199C64AC000DC8B0 /* Info.plist */,
 			);
 			name = "Supporting Files";

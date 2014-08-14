@@ -9,7 +9,19 @@
 import UIKit
 
 class ViewController: UIViewController {
-                            
+    
+// MARK: Properties
+    @IBOutlet var gameView: UIView!
+    
+    
+// MARK: Gesture Action
+    
+    @IBAction func tap(sender: UITapGestureRecognizer) {
+    }
+    
+    
+
+// MARK: Initialize
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.

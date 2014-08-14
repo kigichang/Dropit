@@ -13,6 +13,7 @@
 		17E6053D199C64AC000DC8B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 17E6053B199C64AC000DC8B0 /* Main.storyboard */; };
 		17E6053F199C64AC000DC8B0 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17E6053E199C64AC000DC8B0 /* Images.xcassets */; };
 		17E6054B199C64AC000DC8B0 /* DropItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E6054A199C64AC000DC8B0 /* DropItTests.swift */; };
+		17E60555199C825C000DC8B0 /* DropitBehavior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17E60554199C825C000DC8B0 /* DropitBehavior.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +37,7 @@
 		17E60544199C64AC000DC8B0 /* DropItTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DropItTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		17E60549199C64AC000DC8B0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17E6054A199C64AC000DC8B0 /* DropItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DropItTests.swift; sourceTree = "<group>"; };
+		17E60554199C825C000DC8B0 /* DropitBehavior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropitBehavior.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				17E60539199C64AC000DC8B0 /* ViewController.swift */,
+				17E60554199C825C000DC8B0 /* DropitBehavior.swift */,
 				17E6053B199C64AC000DC8B0 /* Main.storyboard */,
 				17E6053E199C64AC000DC8B0 /* Images.xcassets */,
 				17E60536199C64AC000DC8B0 /* DropIt.xcdatamodeld */,
@@ -212,6 +215,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				17E6053A199C64AC000DC8B0 /* ViewController.swift in Sources */,
+				17E60555199C825C000DC8B0 /* DropitBehavior.swift in Sources */,
 				17E60535199C64AC000DC8B0 /* AppDelegate.swift in Sources */,
 				17E60538199C64AC000DC8B0 /* DropIt.xcdatamodeld in Sources */,
 			);
@@ -399,6 +403,7 @@
 				17E60550199C64AC000DC8B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		17E60551199C64AC000DC8B0 /* Build configuration list for PBXNativeTarget "DropItTests" */ = {
 			isa = XCConfigurationList;
@@ -407,6 +412,7 @@
 				17E60553199C64AC000DC8B0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 

@@ -14,7 +14,7 @@ class DropitBehavior: UIDynamicBehavior {
 
     lazy var gravity: UIGravityBehavior = { () -> UIGravityBehavior in
         var g = UIGravityBehavior()
-        g.magnitude = 0.9
+        g.magnitude = 1.0
         return g
     }()
 
@@ -25,22 +25,30 @@ class DropitBehavior: UIDynamicBehavior {
         return c
     }()
     
+    lazy var animationOptions: UIDynamicItemBehavior = { () -> UIDynamicItemBehavior in
+        var a = UIDynamicItemBehavior()
+        a.allowsRotation = false
+        return a
+    }()
 
     override init() {
         super.init()
         self.addChildBehavior(self.gravity)
         self.addChildBehavior(self.collider)
+        self.addChildBehavior(self.animationOptions)
     }
 
     // TODO:
     func addItem(item: UIDynamicItem) {
         self.gravity.addItem(item)
         self.collider.addItem(item)
+        self.animationOptions.addItem(item)
     }
     
     // TODO:
     func removeItem(item: UIDynamicItem) {
         self.gravity.removeItem(item)
         self.collider.removeItem(item)
+        self.animationOptions.removeItem(item)
     }
 }

@@ -30,6 +30,12 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
         self.animator.addBehavior(d)
         return d
     }()
+
+
+    var attachment: UIAttachmentBehavior!
+
+    var droppingView: UIView?
+
     
 // MARK: UIDynamicAnimatorDelegate
 
@@ -96,11 +102,35 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
 
 // MARK: Gesture Action
     
+    @IBAction func pap(sender: UIPanGestureRecognizer) {
+        let gesturePoint = sender.locationInView(self.gameView)
+        switch sender.state {
+            case UIGestureRecognizerState.Began:
+                self.attachDroppingViewToPoint(gesturePoint)
+
+            case UIGestureRecognizerState.Changed:
+                self.attachment.anchorPoint = gesturePoint
+
+            case UIGestureRecognizerState.Ended:
+                self.animator.removeBehavior(self.attachment)
+
+            default:
+                break
+        }
+    }
+
+    func attachDroppingViewToPoint(anchorPoint: CGPoint) {
+        if let view = self.droppingView {
+            self.attachment = UIAttachmentBehavior(item: view, attachedToAnchor: anchorPoint)
+            self.droppingView = nil
+            self.animator.addBehavior(self.attachment)
+        }
+    }
+
     @IBAction func tap(sender: UITapGestureRecognizer) {
         self.drop()
     }
-    
-    
+
     func drop() {
         var frame = CGRect(origin: CGPointZero, size: ViewController.DROP_SIZE)
         let x = Int(arc4random()) % Int(self.gameView.bounds.size.width) / Int(ViewController.DROP_SIZE.width)
@@ -111,6 +141,9 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
         dropView.backgroundColor = self.randomColor()
         
         self.gameView.addSubview(dropView)
+
+        self.droppingView = dropView
+
         self.dropitBehavior.addItem(dropView)
     }
     

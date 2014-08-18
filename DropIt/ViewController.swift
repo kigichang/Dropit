@@ -17,7 +17,7 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
         return GLOBAL_DROP_SIZE
     }
     
-    @IBOutlet var gameView: UIView!
+    @IBOutlet var gameView: BezierPathView!
     
     lazy var animator: UIDynamicAnimator = { () -> UIDynamicAnimator in
         var a = UIDynamicAnimator(referenceView: self.gameView!)
@@ -113,7 +113,7 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
 
             case UIGestureRecognizerState.Ended:
                 self.animator.removeBehavior(self.attachment)
-
+                self.gameView.path = nil
             default:
                 break
         }
@@ -122,6 +122,14 @@ class ViewController: UIViewController, UIDynamicAnimatorDelegate {
     func attachDroppingViewToPoint(anchorPoint: CGPoint) {
         if let view = self.droppingView {
             self.attachment = UIAttachmentBehavior(item: view, attachedToAnchor: anchorPoint)
+            
+            self.attachment.action = { () -> Void in
+                let path = UIBezierPath()
+                path.moveToPoint(self.attachment.anchorPoint)
+                path.addLineToPoint(view.center)
+                self.gameView.path = path
+            }
+            
             self.droppingView = nil
             self.animator.addBehavior(self.attachment)
         }
